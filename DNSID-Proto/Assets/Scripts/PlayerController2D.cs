@@ -33,6 +33,7 @@ public class PlayerController2D : MonoBehaviour {
 
 	//Stops players from doing things while hidden
 	private bool playerHidden = false;
+	private bool enableHide = false;
 
 
 
@@ -59,8 +60,10 @@ public class PlayerController2D : MonoBehaviour {
 			}
 		}
 
+
+
 		//SWITCH TO HIDDEN STATE
-		if (Input.GetKeyDown (KeyCode.E) && _controller.isGrounded){
+		if (Input.GetKeyDown (KeyCode.E) && enableHide == true && _controller.isGrounded){
 			if (playerState != 2) {
 				playerState = 2;
 				playerVisible = 0;
@@ -70,7 +73,10 @@ public class PlayerController2D : MonoBehaviour {
 				playerVisible = 100;
 				playerHidden = false;
 			}
+			Debug.Log ("SWAG");
 		}
+
+
 
 		//SETS PLAYER STATES
 		switch (playerState)
@@ -87,6 +93,8 @@ public class PlayerController2D : MonoBehaviour {
 		}
 
 	}
+
+
 
 	//PLAYER MOVEMENT
 	void defaultMove (float walkSpeed, float jumpHeight) {
@@ -116,4 +124,19 @@ public class PlayerController2D : MonoBehaviour {
 
 	}
 
+	//HIDEABLE OBJECTS STUFF
+	void OnTriggerEnter2D (Collider2D cols){
+
+		if (cols.tag == "Hideable Objects") {
+			enableHide = true;
+		}
+
+	}
+
+	void OnTriggerExit2D (Collider2D cols){
+
+		if (cols.tag == "Hideable Objects") {
+			enableHide = false;
+		}
+	}
 }

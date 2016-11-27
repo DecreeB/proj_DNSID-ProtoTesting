@@ -36,9 +36,6 @@ public class PlayerController2D : MonoBehaviour {
 	private bool playerHidden = false;
 	private bool enableHide = false;
 
-	private BoxCollider2D playerVisibilityScale;
-
-
 
 	// Use this for initialization
 	void Start () {
@@ -74,7 +71,6 @@ public class PlayerController2D : MonoBehaviour {
 				playerVisible = 1f;
 				playerHidden = false;
 			}
-			Debug.Log ("SWAG");
 		}
 
 
@@ -92,10 +88,6 @@ public class PlayerController2D : MonoBehaviour {
 			defaultMove (0, 0);
 			break;
 		}
-
-
-		//SETS PLAYERVISIBILITY BOX COLLIDER
-
 
 	}
 
@@ -140,4 +132,6 @@ public class PlayerController2D : MonoBehaviour {
 			enableHide = false;
 		}
 	}
+
+
 }

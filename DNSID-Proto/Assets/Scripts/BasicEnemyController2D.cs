@@ -25,8 +25,12 @@ public class BasicEnemyController2D : MonoBehaviour {
 
 	//SET PRIVATE VARIABLES
 	private CharacterController2D _controller;
+	private PolygonCollider2D _lineOfSight;
 	private int enemyState = 1;
-	private int enemyDirection = 1;
+	private Vector2 currentScale;
+
+	//enemyDirection 1 = right and -1 = left
+	private int enemyDirection = -1;
 	private bool isWaiting = false;
 
 
@@ -40,7 +44,6 @@ public class BasicEnemyController2D : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Debug.Log (enemyDirection);
 		if (Input.GetKeyDown (KeyCode.F)) {
 			if (enemyState != 1) {
 				enemyState = 1;
@@ -78,17 +81,20 @@ public class BasicEnemyController2D : MonoBehaviour {
 			enemyState = 0;
 			isWaiting = true;
 			Invoke ("idleWait", waitTime);
-			enemyDirection = enemyDirection * -1;
+			Invoke ("flipChar", waitTime);
+			enemyDirection *= -1;
 		} else if (enemyDirection == 1 && this.transform.position.x >= spot2X) {
 			enemyState = 0;
 			isWaiting = true;
 			Invoke ("idleWait", waitTime);
-			enemyDirection = enemyDirection * -1;
+			Invoke ("flipChar", waitTime);
+			enemyDirection *= -1;
 		}
 
 		_controller.move (velocity * Time.deltaTime);
 
 	}
+
 
 	void idleWait (){
 
@@ -96,7 +102,16 @@ public class BasicEnemyController2D : MonoBehaviour {
 		isWaiting = false;
 
 	}
-		
+
+
+	void flipChar () {
+
+		_lineOfSight = GetComponentInChildren<PolygonCollider2D> () as PolygonCollider2D;
+		currentScale = _lineOfSight.transform.localScale;
+		currentScale.x = currentScale.x * -1;
+		_lineOfSight.transform.localScale = currentScale;
+
+	}
 
 
 }

@@ -24,16 +24,19 @@ public class PlayerController2D : MonoBehaviour {
 
 	//_controller is used for quick access to gameObject.GetComponent<CharacterController2D>
 	private CharacterController2D _controller;
+	private CharacterController2D _Shit;
 
 	//Sets the player's default state, grid listed above for conveniences
 	private int playerState = 0;
 
 	//How visible is the player?
-	private int playerVisible = 100;
+	private float playerVisible = 1f;
 
 	//Stops players from doing things while hidden
 	private bool playerHidden = false;
 	private bool enableHide = false;
+
+	private BoxCollider2D playerVisibilityScale;
 
 
 
@@ -42,7 +45,6 @@ public class PlayerController2D : MonoBehaviour {
 
 		_controller = gameObject.GetComponent<CharacterController2D> ();
 		gameCamera.GetComponent<CameraFollow2D> ().startCameraFollow (this.gameObject);
-
 
 	}
 	
@@ -53,24 +55,23 @@ public class PlayerController2D : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.LeftControl) && playerHidden == false && _controller.isGrounded) {
 			if (playerState != 1) {
 				playerState = 1;
-				playerVisible = 50;
+				playerVisible = 0.5f;
 			} else {
 				playerState = 0;
-				playerVisible = 100;
+				playerVisible = 1f;
 			}
 		}
-
 
 
 		//SWITCH TO HIDDEN STATE
 		if (Input.GetKeyDown (KeyCode.E) && enableHide == true && _controller.isGrounded){
 			if (playerState != 2) {
 				playerState = 2;
-				playerVisible = 0;
+				playerVisible = 0f;
 				playerHidden = true;
 			} else {
 				playerState = 0;
-				playerVisible = 100;
+				playerVisible = 1f;
 				playerHidden = false;
 			}
 			Debug.Log ("SWAG");
@@ -88,12 +89,15 @@ public class PlayerController2D : MonoBehaviour {
 			defaultMove (crouchSpeed, crouchJumpHeight);
 			break;
 		case 2:
-
+			defaultMove (0, 0);
 			break;
 		}
 
-	}
 
+		//SETS PLAYERVISIBILITY BOX COLLIDER
+
+
+	}
 
 
 	//PLAYER MOVEMENT
@@ -114,9 +118,6 @@ public class PlayerController2D : MonoBehaviour {
 		if (Input.GetAxis("Jump") > 0 && _controller.isGrounded) {
 			velocity.y = Mathf.Sqrt (2f * jumpHeight * -gravity);
 		}
-
-		//Friction
-		//velocity.x *= 0.10f;
 
 		velocity.y += gravity * Time.deltaTime;
 

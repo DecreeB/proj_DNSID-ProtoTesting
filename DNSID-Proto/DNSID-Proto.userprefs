@@ -1,14 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BasicEnemyController2D.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController2D.cs">
     <Files>
-      <File FileName="Assets\Scripts\BasicEnemyController2D.cs" Line="85" Column="25" />
-      <File FileName="Assets\Scripts\PlayerController2D.cs" Line="134" Column="3" />
+      <File FileName="Assets\Scripts\BasicEnemyController2D.cs" Line="110" Column="3" />
+      <File FileName="Assets\Scripts\PlayerController2D.cs" Line="147" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\DecreeB\Desktop\Revent Games\proj_DNSID-ProtoTesting\DNSID-Proto\Assets\Scripts\PlayerController2D.cs" line="42" column="1" />
+      <Breakpoint file="C:\Users\DecreeB\Desktop\Revent Games\proj_DNSID-ProtoTesting\DNSID-Proto\Assets\Scripts\PlayerController2D.cs" line="44" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

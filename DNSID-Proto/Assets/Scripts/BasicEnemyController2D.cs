@@ -27,7 +27,7 @@ public class BasicEnemyController2D : MonoBehaviour {
 	private CharacterController2D _controller;
 	private PolygonCollider2D _lineOfSight;
 	private int enemyState = 1;
-	private Vector2 currentScale;
+	public static Vector3 currentRot;
 
 	//enemyDirection 1 = right and -1 = left
 	private int enemyDirection = -1;
@@ -107,9 +107,11 @@ public class BasicEnemyController2D : MonoBehaviour {
 	void flipChar () {
 
 		_lineOfSight = GetComponentInChildren<PolygonCollider2D> () as PolygonCollider2D;
-		currentScale = _lineOfSight.transform.localScale;
-		currentScale.x = currentScale.x * -1;
-		_lineOfSight.transform.localScale = currentScale;
+		currentRot.x = _lineOfSight.transform.eulerAngles.x;
+		currentRot.y = _lineOfSight.transform.eulerAngles.y;
+		currentRot.z = _lineOfSight.transform.eulerAngles.z;
+		currentRot.z += + 180;
+		_lineOfSight.transform.eulerAngles = currentRot;
 
 	}
 

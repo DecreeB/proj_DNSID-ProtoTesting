@@ -25,6 +25,8 @@ public class PlayerController2D : MonoBehaviour {
 	//_controller is used for quick access to gameObject.GetComponent<CharacterController2D>
 	private CharacterController2D _controller;
 	private CharacterController2D _Shit;
+	private GameObject[] sightCones;
+	private Vector2 coneScale;
 
 	//Sets the player's default state, grid listed above for conveniences
 	private int playerState = 0;
@@ -42,6 +44,7 @@ public class PlayerController2D : MonoBehaviour {
 
 		_controller = gameObject.GetComponent<CharacterController2D> ();
 		gameCamera.GetComponent<CameraFollow2D> ().startCameraFollow (this.gameObject);
+		sightCones = GameObject.FindGameObjectsWithTag ("Line of Sight Cone");
 
 	}
 	
@@ -53,9 +56,11 @@ public class PlayerController2D : MonoBehaviour {
 			if (playerState != 1) {
 				playerState = 1;
 				playerVisible = 0.5f;
+				ScaleLineOfSight ();
 			} else {
 				playerState = 0;
 				playerVisible = 1f;
+				ScaleLineOfSight ();
 			}
 		}
 
@@ -66,10 +71,12 @@ public class PlayerController2D : MonoBehaviour {
 				playerState = 2;
 				playerVisible = 0f;
 				playerHidden = true;
+				ScaleLineOfSight ();
 			} else {
 				playerState = 0;
 				playerVisible = 1f;
 				playerHidden = false;
+				ScaleLineOfSight ();
 			}
 		}
 
@@ -132,6 +139,21 @@ public class PlayerController2D : MonoBehaviour {
 			enableHide = false;
 		}
 	}
+
+	void ScaleLineOfSight (){
+
+		foreach (GameObject thisCone in sightCones) {
+			
+			coneScale = thisCone.GetComponent<PolygonCollider2D> ().transform.localScale;
+
+			coneScale.x = playerVisible;
+
+			thisCone.GetComponent<PolygonCollider2D> ().transform.localScale = coneScale;
+		}
+
+
+	}
+
 
 
 }

@@ -25,7 +25,7 @@ public class PlayerController2D : MonoBehaviour {
 	//_controller is used for quick access to gameObject.GetComponent<CharacterController2D>
 	private CharacterController2D _controller;
 	private CharacterController2D _Shit;
-	private GameObject[] sightCones;
+	private GameObject[] enemies;
 	private Vector2 coneScale;
 
 	//Sets the player's default state, grid listed above for conveniences
@@ -44,10 +44,10 @@ public class PlayerController2D : MonoBehaviour {
 
 		_controller = gameObject.GetComponent<CharacterController2D> ();
 		gameCamera.GetComponent<CameraFollow2D> ().startCameraFollow (this.gameObject);
-		sightCones = GameObject.FindGameObjectsWithTag ("Line of Sight Cone");
+		enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 
 	}
-	
+
 	//FixedUpdate is called once per frame
 	void FixedUpdate () {
 
@@ -142,8 +142,8 @@ public class PlayerController2D : MonoBehaviour {
 
 	void ScaleLineOfSight (){
 
-		foreach (GameObject thisCone in sightCones) {
-			
+		foreach (GameObject thisCone in enemies) {
+
 			coneScale = thisCone.GetComponent<PolygonCollider2D> ().transform.localScale;
 
 			coneScale.x = playerVisible;
@@ -151,9 +151,7 @@ public class PlayerController2D : MonoBehaviour {
 			thisCone.GetComponent<PolygonCollider2D> ().transform.localScale = coneScale;
 		}
 
-
 	}
-
 
 
 }

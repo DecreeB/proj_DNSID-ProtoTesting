@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\BasicEnemyController2D.cs" />
      <Compile Include="Assets\Scripts\CameraFollow2D.cs" />
      <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+     <Compile Include="Assets\Scripts\LineOfSightController.cs" />
      <Compile Include="Assets\Scripts\LoadLevelUtil.cs" />
      <Compile Include="Assets\Scripts\PlayerController2D.cs" />
  <Reference Include="UnityEngine.UI">

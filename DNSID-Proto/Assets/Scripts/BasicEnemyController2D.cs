@@ -22,6 +22,7 @@ public class BasicEnemyController2D : MonoBehaviour {
 	public float spot2X = 21f;
 	public float spot2Y = 0f;
 	public int waitTime = 0;
+	public float awareWait = 1f;
 
 	//SET PRIVATE VARIABLES
 	private CharacterController2D _controller;
@@ -40,7 +41,7 @@ public class BasicEnemyController2D : MonoBehaviour {
 		_controller = gameObject.GetComponent<CharacterController2D> ();
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -51,7 +52,12 @@ public class BasicEnemyController2D : MonoBehaviour {
 				enemyState = 0;
 			}
 		}
-	
+
+
+
+
+
+
 		//SETS ENEMY STATES
 		switch (enemyState)
 		{
@@ -66,7 +72,7 @@ public class BasicEnemyController2D : MonoBehaviour {
 	}
 
 	void defaultMove (float walkSpeed, float jumpHeight) {
-		
+
 		Vector3 velocity = _controller.velocity;
 
 		velocity.x = 0;
@@ -112,6 +118,28 @@ public class BasicEnemyController2D : MonoBehaviour {
 		currentRot.z = _lineOfSight.transform.eulerAngles.z;
 		currentRot.z += + 180;
 		_lineOfSight.transform.eulerAngles = currentRot;
+
+	}
+
+
+	void onTriggerEnter2D (Collider2D cols) {
+
+		if (cols.tag == "Player") {
+			aware ();
+		}
+
+	}
+
+	void aware(){
+
+		Debug.Log ("Aware");
+		Invoke ("Chase", awareWait);
+
+	}
+
+	void chasePlayer(){
+
+		Debug.Log ("Chase");
 
 	}
 

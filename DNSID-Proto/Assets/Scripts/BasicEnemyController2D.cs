@@ -122,8 +122,10 @@ public class BasicEnemyController2D : MonoBehaviour {
 	}
 
 
-	void onTriggerEnter2D (Collider2D cols) {
+	void OnTriggerEnter2D (Collider2D cols) {
 
+
+		Debug.Log ("Entered Trigger");
 		if (cols.tag == "Player") {
 			aware ();
 		}
@@ -133,7 +135,7 @@ public class BasicEnemyController2D : MonoBehaviour {
 	void aware(){
 
 		Debug.Log ("Aware");
-		Invoke ("Chase", awareWait);
+		Invoke ("chasePlayer", awareWait);
 
 	}
 

@@ -1,10 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController2D.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BasicEnemyController2D.cs">
     <Files>
-      <File FileName="Assets\Scripts\BasicEnemyController2D.cs" Line="142" Column="17" />
-      <File FileName="Assets\Scripts\PlayerController2D.cs" Line="157" Column="2" />
-      <File FileName="Assets\Scripts\LineOfSightController.cs" Line="21" Column="31" />
+      <File FileName="Assets\Scripts\BasicEnemyController2D.cs" Line="145" Column="3" />
+      <File FileName="Assets\Scripts\PlayerController2D.cs" Line="143" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
